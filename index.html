@@ -3,106 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Very Good Designs | Laboratory NCC-1701</title>
+    <title>Very Good Designs | Acoustic Engineering Labs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- TOP PANEL: Brushed Aluminum -->
-    <header class="brushed-aluminum p-4 sticky top-0 z-[1000]">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full border-4 border-zinc-500 bg-zinc-800 flex items-center justify-center font-bold text-zinc-400">VG</div>
+    <!-- PRIMARY CHASSIS: RICH WALNUT HEADER -->
+    <header class="wood-texture p-8 sticky top-0 z-[1000] border-b-[8px] border-[#140a05]">
+        <div class="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10">
+            <div class="flex items-center gap-8">
+                <div class="w-20 h-20 rounded-full border-4 border-zinc-950 bg-black flex items-center justify-center shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
+                    <span class="text-zinc-100 font-black text-3xl italic serif">VGD</span>
+                </div>
                 <div>
-                    <h1 class="text-zinc-800 font-bold tracking-tighter text-2xl" style="font-family: var(--font-label); font-weight: 700;">VERY GOOD DESIGNS</h1>
-                    <p class="text-[10px] text-zinc-500 mono -mt-1 tracking-widest uppercase">Research & Development Division</p>
+                    <h1 class="text-zinc-50 font-black tracking-tight text-4xl" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Very Good Designs</h1>
+                    <p class="text-[13px] text-zinc-400 font-bold tracking-[0.4em] uppercase opacity-70">Acoustic Engineering Labs // Prototype Division</p>
                 </div>
             </div>
             
-            <div class="flex gap-2">
-                <button onclick="navigate('home')" class="rocker-switch active nav-btn" data-id="home">About Us</button>
-                <button onclick="navigate('cosmic')" class="rocker-switch nav-btn" data-id="cosmic">Cosmic Rays</button>
-                <button onclick="navigate('echo')" class="rocker-switch nav-btn" data-id="echo">Tape Echo</button>
-                <button onclick="navigate('archive')" class="rocker-switch nav-btn" data-id="archive">Awesome Omnichord</button>
-                <button onclick="navigate('partners')" class="rocker-switch nav-btn" data-id="partners">Casa Occidente</button>
+            <div class="flex gap-4 items-center">
+                <!-- Navigation Bolted Plate -->
+                <div class="mounting-plate px-8 py-3">
+                    <div class="screw tl" style="--screw-rot: 12deg"></div><div class="screw tr" style="--screw-rot: 85deg"></div>
+                    <div class="screw bl" style="--screw-rot: 140deg"></div><div class="screw br" style="--screw-rot: 200deg"></div>
+                    
+                    <div class="flex">
+                        <div class="relative">
+                            <button onclick="navigate('home')" class="industrial-rocker active nav-btn" data-id="home">Overview</button>
+                            <div class="filament-glow-under"></div>
+                        </div>
+                        <div class="relative">
+                            <button onclick="navigate('cosmic')" class="industrial-rocker nav-btn" data-id="cosmic">Processors</button>
+                            <div class="filament-glow-under"></div>
+                        </div>
+                        <div class="relative">
+                            <button onclick="navigate('echo')" class="industrial-rocker nav-btn" data-id="echo">Subsystems</button>
+                            <div class="filament-glow-under"></div>
+                        </div>
+                        <div class="relative">
+                            <button onclick="navigate('archive')" class="industrial-rocker nav-btn" data-id="archive">Archive</button>
+                            <div class="filament-glow-under"></div>
+                        </div>
+                        <div class="relative">
+                            <button onclick="navigate('partners')" class="industrial-rocker nav-btn" data-id="partners">Uplink</button>
+                            <div class="filament-glow-under"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- HERO: Scope Display -->
-    <section class="p-6 md:p-12">
+    <!-- MAIN INTERFACE: THE SCOPE -->
+    <section class="p-10 md:p-20">
         <div class="max-w-6xl mx-auto">
-            <div class="crt-container">
-                <div class="crt-screen" id="main-screen">
-                    <div class="grid-lines"></div>
-                    <canvas id="oscilloscope"></canvas>
+            <div class="crt-bezel">
+                <div class="screen-glass" id="main-screen">
+                    <canvas id="oscilloscope" class="absolute inset-0 z-0"></canvas>
                     
-                    <!-- DYNAMIC VIEWS -->
-                    <div id="view-home" class="page-view active relative z-10 p-8 phosphor-text">
-                        <div class="flex justify-between">
+                    <!-- PHOSPHOR CONTENT -->
+                    <div id="view-home" class="page-view active relative z-10 p-14 phosphor-readout">
+                        <div class="flex justify-between items-start border-b border-green-900/40 pb-6 mb-12">
                             <div>
-                                <p>> SYSTEM STATUS: NOMINAL</p>
-                                <p>> STARDATE: <span id="stardate">41254.7</span></p>
-                                <p>> LAB: VERY GOOD DESIGNS</p>
+                                <p class="tracking-widest text-2xl font-bold uppercase">> SYSTEM STATUS: NOMINAL</p>
+                                <div class="flex items-center gap-4 mt-4">
+                                    <p class="tracking-widest text-lg opacity-80 uppercase">Internal Chronometer:</p>
+                                    <div class="nixie-display" id="nixie-stardate"></div>
+                                </div>
                             </div>
                             <div class="text-right">
-                                <p class="text-amber-500 animate-pulse">SYSTEMS READY</p>
+                                <p class="animate-pulse text-2xl font-black">SYNCED</p>
                             </div>
                         </div>
-                        <div class="mt-20">
-                            <h2 class="text-4xl md:text-6xl tracking-widest uppercase">About Us</h2>
-                            <p class="mt-4 max-w-xl">> AUDIO TOOLS DESIGNED FOR DEEP SPACE EXPLORATION. FROM C++23 KERNELS TO HAND-SOLDERED CHASSIS HARDWARE.</p>
+                        <div class="mt-16">
+                            <h2 class="text-7xl md:text-9xl font-black tracking-tighter mb-8">LAB_UNIT_01</h2>
+                            <p class="text-3xl max-w-3xl leading-relaxed serif italic text-green-100">"Tactile precision for unconventional audio signals."</p>
+                            <p class="text-xl mt-8 max-w-2xl opacity-70 leading-relaxed font-medium">> Current focus: Multi-head temporal displacement and high-performance C++23 granular cloud architecture.</p>
                         </div>
                     </div>
 
-                    <div id="view-cosmic" class="page-view relative z-10 p-8 phosphor-text">
-                        <p>> ARRAY: COSMIC RAYS</p>
-                        <p>> STATUS: ACTIVE BEACON</p>
-                        <div class="mt-12">
-                            <h2 class="text-5xl text-cyan-400">GRANULAR SIGNAL DETECTED</h2>
-                            <p class="mt-4">> Professional-grade granular processor. <br>> Native AU/VST3/LV2 platform compatibility.</p>
-                            <div class="mt-8 flex gap-4">
-                                <a href="https://verygoodideas.gumroad.com/l/Cosmic-Rays" target="_blank" class="trek-btn px-6 py-2">DOWNLOAD_BETA</a>
-                                <a href="https://github.com/KhanTheDaleK1/cosmic-rays" target="_blank" class="trek-btn blue px-6 py-2">SOURCE_CODE</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="view-echo" class="page-view relative z-10 p-8 phosphor-text">
-                        <p>> SUBSYSTEM: TAPE ECHO</p>
-                        <p>> STATUS: <span class="text-amber-500 animate-pulse">UNDER CONSTRUCTION</span></p>
-                        <div class="mt-12">
-                            <h2 class="text-5xl text-amber-500">MECHANICAL DRIFT SIM</h2>
-                            <p class="mt-4">> 20-head virtual tape loop architecture. <br>> C++23 / JUCE 8 DSP engine.</p>
-                            <div class="mt-8 flex gap-4">
-                                <span class="trek-btn red px-6 py-2">LAB_ACCESS_ONLY</span>
-                                <a href="https://github.com/KhanTheDaleK1/Tape-echo-project" target="_blank" class="trek-btn blue px-6 py-2">VIEW_SCHEMATICS</a>
+                    <div id="view-cosmic" class="page-view relative z-10 p-14 phosphor-readout">
+                        <p class="tracking-widest text-2xl font-bold uppercase">> ACTIVE PROCESSOR: COSMIC RAYS</p>
+                        <div class="mt-24">
+                            <h2 class="text-8xl font-black mb-6 uppercase">Granular_Storm</h2>
+                            <p class="text-3xl opacity-90">> Real-time spectral dispersal engine. <br>> Native architecture (AU/VST3/LV2).</p>
+                            <div class="mt-16 flex gap-10">
+                                <a href="https://verygoodideas.gumroad.com/l/Cosmic-Rays" target="_blank" class="px-10 py-5 border-4 border-green-500 bg-green-500/10 text-green-400 font-black text-xl uppercase tracking-widest cursor-pointer hover:bg-green-500 hover:text-black transition-all no-underline">DOWNLOAD_RELEASE</a>
+                                <a href="https://github.com/KhanTheDaleK1/cosmic-rays" target="_blank" class="px-10 py-5 border-4 border-green-500 text-green-400 font-black text-xl uppercase tracking-widest cursor-pointer hover:bg-green-500 hover:text-black transition-all no-underline">GIT_DATA</a>
                             </div>
                         </div>
                     </div>
 
-                    <div id="view-archive" class="page-view relative z-10 p-8 phosphor-text">
-                        <p>> ARCHIVE: AWESOME OMNICHORD</p>
-                        <p>> STATUS: ONLINE / READ-ONLY</p>
-                        <div class="mt-12">
-                            <h2 class="text-5xl text-emerald-400">THE STRUMPLATE DATA</h2>
-                            <p class="mt-4">> Comprehensive Suzuki Omnichord knowledge base. <br>> 1981-2024 Technical Specifications.</p>
-                            <div class="mt-8 flex gap-4">
-                                <a href="https://khanthedalek1.github.io/Awesome-Omichord/" target="_blank" class="trek-btn px-6 py-2">LAUNCH_ARCHIVE</a>
-                                <a href="https://github.com/KhanTheDaleK1/Awesome-Omichord" target="_blank" class="trek-btn blue px-6 py-2">GITHUB_DATA</a>
+                    <div id="view-echo" class="page-view relative z-10 p-14 phosphor-readout">
+                        <p class="tracking-widest text-2xl font-bold uppercase">> SUBSYSTEM: TAPE ECHO</p>
+                        <div class="mt-24">
+                            <h2 class="text-8xl font-black mb-6 uppercase">Mechanical_Drift</h2>
+                            <p class="text-3xl opacity-90">> 20-head virtual tape loop architecture. <br>> Mass-spring-damper physics simulation.</p>
+                            <div class="mt-16 flex gap-10">
+                                <span class="px-10 py-5 border-4 border-orange-500 text-orange-500 font-black text-xl uppercase tracking-widest cursor-not-allowed">LAB_ACCESS_ONLY</span>
+                                <a href="https://github.com/KhanTheDaleK1/Tape-echo-project" target="_blank" class="px-10 py-5 border-4 border-green-500 text-green-400 font-black text-xl uppercase tracking-widest cursor-pointer hover:bg-green-500 hover:text-black transition-all no-underline">VIEW_SCHEMATICS</a>
                             </div>
                         </div>
                     </div>
 
-                    <div id="view-partners" class="page-view relative z-10 p-8 phosphor-text">
-                        <p>> PARTNER: CASA OCCIDENTE</p>
-                        <p>> STATUS: STRATEGIC PARTNER</p>
-                        <div class="mt-12">
-                            <h2 class="text-5xl text-indigo-400">WESTERN HOUSE LABS</h2>
-                            <p class="mt-4">> Professional workflow automation experts. <br>> Developers of RaiderPro.</p>
-                            <div class="mt-8 flex gap-4">
-                                <a href="https://casaoccidente.com/en-lang" target="_blank" class="trek-btn px-6 py-2">EXPLORE_RAIDERPRO</a>
+                    <div id="view-archive" class="page-view relative z-10 p-14 phosphor-readout">
+                        <p class="tracking-widest text-2xl font-bold uppercase">> ARCHIVE: OMNICHORD</p>
+                        <div class="mt-24">
+                            <h2 class="text-8xl font-black mb-6 uppercase">Strumplate_Data</h2>
+                            <p class="text-3xl opacity-90">> Comprehensive Suzuki Omnichord technical vault. <br>> 1981-2024 Specifications.</p>
+                            <div class="mt-16">
+                                <a href="https://khanthedalek1.github.io/Awesome-Omichord/" target="_blank" class="px-10 py-5 border-4 border-green-500 bg-green-500/10 text-green-400 font-black text-xl uppercase tracking-widest cursor-pointer hover:bg-green-500 hover:text-black transition-all no-underline">LAUNCH_ARCHIVE</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="view-partners" class="page-view relative z-10 p-14 phosphor-readout">
+                        <p class="tracking-widest text-2xl font-bold uppercase">> PARTNER: CASA OCCIDENTE</p>
+                        <div class="mt-24">
+                            <h2 class="text-8xl font-black mb-6 uppercase">Western_House</h2>
+                            <p class="text-3xl opacity-90">> Professional workflow automation. <br>> Developers of RaiderPro.</p>
+                            <div class="mt-16">
+                                <a href="https://casaoccidente.com/en-lang" target="_blank" class="px-10 py-5 border-4 border-indigo-500 text-indigo-400 font-black text-xl uppercase tracking-widest cursor-pointer hover:bg-indigo-500 hover:text-black transition-all no-underline">EXPLORE_ALLIANCE</a>
                             </div>
                         </div>
                     </div>
@@ -111,25 +133,44 @@
         </div>
     </section>
 
-    <!-- HIFI STACK: Products / Cards -->
-    <section class="px-6 py-12 bg-zinc-900/50">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex items-center gap-8 mb-12">
-                <div class="vu-meter flex-1"><div class="vu-needle" id="needle-l"></div></div>
-                <h3 class="text-2xl text-zinc-500 uppercase tracking-widest font-bold" style="font-family: var(--font-label)">Subsystem Status Report</h3>
-                <div class="vu-meter flex-1"><div class="vu-needle" id="needle-r"></div></div>
-            </div>
+    <!-- MODULE INVENTORY: RACKMOUNT -->
+    <section class="px-10 py-24 bg-zinc-950/40">
+        <div class="max-w-7xl mx-auto">
+            <header class="flex items-center gap-16 mb-24">
+                <div class="bg-[#111] p-2 border border-zinc-800 rounded-sm flex-1">
+                    <div class="vu-paper shadow-inner"><div class="needle" id="needle-l"></div></div>
+                </div>
+                <h3 class="text-5xl text-zinc-100 font-black tracking-[0.2em] uppercase">Module Inventory</h3>
+                <div class="bg-[#111] p-2 border border-zinc-800 rounded-sm flex-1">
+                    <div class="vu-paper shadow-inner"><div class="needle" id="needle-r"></div></div>
+                </div>
+            </header>
 
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Rackmount modules are loaded dynamically via app.js -->
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 pb-24">
+                <!-- Modules are loaded dynamically via app.js -->
             </div>
         </div>
     </section>
 
-    <!-- INDUSTRIAL FOOTER -->
-    <footer class="industrial-footer text-center">
+    <!-- FOOTER TELEMETRY -->
+    <footer class="footer-plate text-center">
         <div class="max-w-4xl mx-auto">
-            <p class="text-zinc-700 text-[9px] uppercase tracking-tighter">&copy; 2025 Very Good Designs. All rights reserved.</p>
+            <div class="mb-12 flex justify-center items-center gap-6">
+                <div class="w-14 h-14 bg-zinc-950 border-4 border-zinc-900 flex items-center justify-center text-lg font-black serif italic shadow-2xl">VGD</div>
+                <span class="text-zinc-500 uppercase tracking-[0.6em] text-sm font-black">Very Good Designs</span>
+            </div>
+            
+            <div class="flex flex-col items-center gap-6">
+                <div class="nixie-display" id="footer-stardate-nixie"></div>
+                <p class="text-[11px] text-zinc-700 tracking-[0.4em] uppercase font-black">Acoustic Engineering Labs // Serial Archive 4501-A</p>
+            </div>
+            
+            <div class="flex justify-center gap-10 mt-12">
+                <a href="https://github.com/KhanTheDaleK1" target="_blank" class="text-zinc-600 hover:text-green-500 transition-colors mono text-xs tracking-widest uppercase no-underline">GITHUB_UPLINK</a>
+                <a href="https://beechem.site" target="_blank" class="text-zinc-600 hover:text-green-500 transition-colors mono text-xs tracking-widest uppercase no-underline">CORPORATE_NET</a>
+            </div>
+            
+            <p class="mt-16 text-zinc-900 text-[11px] uppercase font-black tracking-widest">&copy; 2025 Very Good Designs. All signals processed internally.</p>
         </div>
     </footer>
 
