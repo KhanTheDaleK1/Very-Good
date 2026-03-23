@@ -3,180 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Very Good Designs | Premium Audio Labs</title>
+    <title>Very Good Designs | Laboratory Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="stars-bg" id="global-stars"></div>
+    <div class="crt-overlay"></div>
 
     <nav>
         <div class="nav-content">
-            <a href="#" class="brand" onclick="navigate('home')">VERY GOOD DESIGNS</a>
+            <a href="#" class="brand" onclick="navigate('home')">V.G. DESIGNS // LAB</a>
             <div class="nav-links">
-                <button onclick="navigate('cosmic')">Cosmic Rays</button>
-                <button onclick="navigate('echo')">Tape Echo</button>
-                <button onclick="navigate('pedals')">Hardware</button>
-                <button onclick="navigate('omni')">Mods</button>
-                <button onclick="navigate('archive')">Archive</button>
-                <button onclick="navigate('partners')">Partners</button>
+                <button onclick="navigate('cosmic')">GRANULAR</button>
+                <button onclick="navigate('echo')">TAPE</button>
+                <button onclick="navigate('pedals')">HARDWARE</button>
+                <button onclick="navigate('omni')">MODS</button>
+                <button onclick="navigate('archive')">ARCHIVE</button>
+                <button onclick="navigate('partners')">PARTNERS</button>
             </div>
         </div>
     </nav>
 
     <!-- HOME VIEW -->
-    <main id="view-home" class="page-view active pt-32 pb-20 px-6">
+    <main id="view-home" class="page-view active px-6">
         <div class="max-w-6xl mx-auto">
-            <header class="text-center mb-24">
-                <span class="mono text-zinc-500 text-xs tracking-widest uppercase mb-4 block">Independent Research & Development</span>
-                <h1 class="text-5xl md:text-7xl mb-6 tracking-tight">Audio tools that <br><span class="text-zinc-500 italic">feel like instruments.</span></h1>
-                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">From high-performance C++ DSP to custom hardware circuitry, we build precision tools for the avant-garde musician.</p>
+            <header class="mb-24 pt-20 border-l-4 border-emerald-500 pl-8">
+                <span class="mono text-zinc-500 text-xs tracking-widest uppercase mb-4 block">System Status: Active // Multi-Platform R&D</span>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none text-zinc-300">MODULAR <br>AUDIO TOOLS.</h1>
+                <p class="text-zinc-500 text-xl max-w-2xl font-light">Engineering precision signal processors at the intersection of analog physics and digital complexity.</p>
             </header>
 
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Projects are loaded dynamically via app.js -->
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 gap-12 pb-24">
+                <!-- Rackmount modules are loaded dynamically via app.js -->
             </div>
         </div>
     </main>
 
     <!-- COSMIC RAYS VIEW -->
-    <main id="view-cosmic" class="page-view theme-cosmic pt-20">
-        <section class="min-h-screen px-6 py-20 flex flex-col items-center justify-center text-center">
-            <span class="status-badge status-released mb-6">BETA v23.03.2026 AVAILABLE</span>
-            <h1 class="text-5xl md:text-8xl mb-8 tracking-tighter">COSMIC RAYS</h1>
-            <p class="text-xl text-zinc-400 max-w-3xl mb-12">A comprehensive effects plugin for unconventional soundscapes. Professional-grade granular processing for the modern producer.</p>
-            <div class="flex gap-4">
-                <button class="glass-btn border-cyan-500/50 text-cyan-400">Free Download</button>
-                <a href="https://github.com/KhanTheDaleK1/cosmic-rays" target="_blank" class="glass-btn">View Source</a>
+    <main id="view-cosmic" class="page-view px-6">
+        <div class="max-w-4xl mx-auto bg-black border-2 border-zinc-800 p-12">
+            <div class="flex justify-between items-start mb-12">
+                <span class="status-badge status-released">BETA v23.03.2026 // METAL ACCELERATED</span>
+                <span class="mono text-zinc-700 text-xs">MODEL: COSMIC_RAYS_V1</span>
             </div>
-            <div class="mt-20 w-full max-w-4xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-                <img src="https://github.com/user-attachments/assets/123c2907-87a6-497b-a2eb-ce29a7325faf" alt="Cosmic Rays UI" class="w-full">
+            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter text-zinc-200">COSMIC RAYS</h1>
+            <p class="text-2xl text-zinc-500 mb-12 leading-relaxed">Kinematic granular engine. Ballistic grain trajectories. Recursive modulation void.</p>
+            
+            <div class="flex gap-4 mb-20">
+                <button class="glass-btn">INITIALIZE DOWNLOAD</button>
+                <a href="https://github.com/KhanTheDaleK1/cosmic-rays" target="_blank" class="glass-btn">ACCESS SOURCE</a>
             </div>
-        </section>
+            
+            <div class="border-4 border-zinc-900 bg-zinc-950 p-4">
+                <img src="https://github.com/user-attachments/assets/123c2907-87a6-497b-a2eb-ce29a7325faf" alt="Cosmic Rays UI" class="w-full opacity-80">
+            </div>
+        </div>
     </main>
 
     <!-- TAPE ECHO VIEW -->
-    <main id="view-echo" class="page-view theme-echo pt-20 bg-gradient-to-b from-amber-950/20 to-black">
-        <section class="max-w-6xl mx-auto px-6 py-20">
-            <div class="flex flex-col md:flex-row gap-16 items-center">
-                <div class="flex-1">
-                    <span class="status-badge status-dev mb-6 inline-block">In Development</span>
-                    <h1 class="text-6xl mb-6 text-amber-500">TAPE ECHO</h1>
-                    <p class="text-xl text-zinc-400 mb-8 leading-relaxed">Blending the mechanical soul of the Echo Fix EF-X3 with the classic grit of the Roland RE-201. Delivered via a high-performance C++23 / JUCE 8 DSP engine.</p>
-                    
-                    <div class="flex gap-4 mb-12">
-                        <button class="glass-btn border-amber-500/50 text-amber-500">In Active Labs</button>
-                        <a href="https://github.com/KhanTheDaleK1/Tape-echo-project" target="_blank" class="glass-btn">View Source</a>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="flex gap-4 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
-                            <p class="text-zinc-300"><strong>20-Head Virtual Tape Loop:</strong> Independent playback heads with precision smoothing.</p>
-                        </div>
-                        <div class="flex gap-4 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
-                            <p class="text-zinc-300"><strong>Wow & Flutter:</strong> Physics-modeled mechanical drift and motor instability.</p>
-                        </div>
-                        <div class="flex gap-4 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
-                            <p class="text-zinc-300"><strong>Spring Reverb:</strong> Authentic tank simulation with dedicated width control.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex-1 w-full">
-                    <div class="aspect-square bg-zinc-900 border border-amber-500/20 rounded-3xl flex flex-col items-center justify-center p-12 text-center group transition-all hover:border-amber-500/50">
-                        <div class="text-5xl mb-6">📼</div>
-                        <h3 class="text-2xl mb-4">Mechanical Aesthetic</h3>
-                        <p class="text-zinc-500 text-sm">Our UI features a real-time tape chamber visualization powered by a Verlet physics engine.</p>
-                        <div class="mt-8 px-6 py-2 border border-amber-500/30 rounded text-[10px] mono text-amber-500 uppercase tracking-widest">
-                            Rendering Engine: Metal / D2D
-                        </div>
-                    </div>
-                </div>
+    <main id="view-echo" class="page-view px-6">
+        <div class="max-w-4xl mx-auto bg-zinc-900 border-2 border-amber-900/50 p-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rotate-45 translate-x-16 -translate-y-16"></div>
+            
+            <span class="status-badge status-dev mb-8 inline-block">LAB_STATUS: ACTIVE_DEVELOPMENT</span>
+            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter text-amber-500">TAPE ECHO</h1>
+            <p class="text-2xl text-zinc-400 mb-12 leading-relaxed">20-head virtual tape loop. Mass-spring-damper physics simulation. High-performance C++23 engine.</p>
+            
+            <div class="flex gap-4 mb-12">
+                <button class="glass-btn border-amber-500/50 text-amber-500">REQUEST LAB ACCESS</button>
+                <a href="https://github.com/KhanTheDaleK1/Tape-echo-project" target="_blank" class="glass-btn">VIEW SCHEMATICS</a>
             </div>
-        </section>
+
+            <div class="divider"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-zinc-500 mono text-sm">
+                <div>> 20 PLAYBACK HEADS // INDEPENDENT MODULATION</div>
+                <div>> VERLET PHYSICS TAPE CHAMBER</div>
+                <div>> SATURATED TANH PREAMP EMULATION</div>
+                <div>> AUTHENTIC SPRING TANK REVERB</div>
+            </div>
+        </div>
     </main>
 
     <!-- GENERIC UNDER CONSTRUCTION VIEW -->
-    <main id="view-under-construction" class="page-view pt-20">
-        <section class="min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
-            <div class="w-24 h-24 bg-zinc-900 rounded-full flex items-center justify-center mb-8 border border-white/10">
-                <div class="animate-pulse w-4 h-4 bg-zinc-500 rounded-full"></div>
+    <main id="view-under-construction" class="page-view px-6">
+        <section class="max-w-2xl mx-auto bg-black border border-zinc-800 p-20 text-center">
+            <div class="mb-12 inline-block p-8 border-4 border-dashed border-zinc-800 rounded-full">
+                <div class="animate-ping w-8 h-8 bg-zinc-600 rounded-full"></div>
             </div>
-            <h1 id="construction-title" class="text-5xl mb-4 uppercase tracking-tighter">PROJECT ALPHA</h1>
-            <p id="construction-desc" class="text-zinc-500 max-w-md">Our hardware engineering labs are currently fabricating enclosures and optimizing circuitry.</p>
-            <div class="mt-12 status-badge status-dev">Lab Status: In Fabrication</div>
-            <button onclick="navigate('home')" class="mt-8 text-sm text-zinc-400 hover:text-white transition-colors">← Back to Hub</button>
+            <h1 id="construction-title" class="text-4xl font-black mb-6 tracking-widest text-zinc-400">PROJECT ALPHA</h1>
+            <p id="construction-desc" class="text-zinc-600 mono mb-12 uppercase tracking-tighter">Hardware fabrication in progress. Optimized circuitry pending validation.</p>
+            <button onclick="navigate('home')" class="glass-btn text-xs">← RETURN TO MAIN TERMINAL</button>
         </section>
     </main>
 
     <!-- AWESOME OMNICHORD VIEW -->
-    <main id="view-archive" class="page-view pt-20 bg-gradient-to-b from-emerald-950/20 to-black">
-        <section class="max-w-6xl mx-auto px-6 py-20 text-center">
-            <span class="status-badge status-released mb-6">LIVE WEB ARCHIVE</span>
-            <h1 class="text-6xl md:text-8xl mb-6 text-emerald-400 tracking-tighter">AWESOME OMNICHORD</h1>
-            <p class="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">The definitive strumplate archive. A comprehensive collection of resources, technical specifications, and repair guides.</p>
+    <main id="view-archive" class="page-view px-6">
+        <div class="max-w-4xl mx-auto bg-zinc-900 border-2 border-emerald-900/50 p-12">
+            <span class="status-badge status-released mb-8 inline-block">LIVE_ARCHIVE: STRUMPLATE_DATA</span>
+            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter text-emerald-500">OMNICHORD</h1>
+            <p class="text-2xl text-zinc-400 mb-12">Comprehensive knowledge base for the Suzuki Omnichord. 1981-2024 technical specifications.</p>
             
-            <div class="flex gap-4 justify-center mb-20">
-                <a href="https://khanthedalek1.github.io/Awesome-Omichord/" target="_blank" class="glass-btn border-emerald-500/50 text-emerald-400">Visit Archive</a>
-                <a href="https://github.com/KhanTheDaleK1/Awesome-Omichord" target="_blank" class="glass-btn">View on GitHub</a>
+            <div class="flex gap-4 mb-12">
+                <a href="https://khanthedalek1.github.io/Awesome-Omichord/" target="_blank" class="glass-btn border-emerald-500/50 text-emerald-400">LAUNCH ARCHIVE</a>
+                <a href="https://github.com/KhanTheDaleK1/Awesome-Omichord" target="_blank" class="glass-btn">ACCESS REPO</a>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Technical Database</h3>
-                    <p class="text-zinc-400 text-sm">Detailed specifications for every model from 1981 to 2024.</p>
-                </div>
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Repair & Modding</h3>
-                    <p class="text-zinc-400 text-sm">Essential guides for maintenance and power polarity safety.</p>
-                </div>
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Community Hub</h3>
-                    <p class="text-zinc-400 text-sm">Links to forums, subreddits, and Discord servers.</p>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <!-- CASA OCCIDENTE VIEW -->
-    <main id="view-partners" class="page-view pt-20 bg-gradient-to-b from-indigo-950/20 to-black">
-        <section class="max-w-6xl mx-auto px-6 py-20 text-center">
-            <span class="status-badge status-released mb-6">CORE DEVELOPMENT PARTNER</span>
-            <h1 class="text-6xl md:text-8xl mb-6 text-indigo-400 tracking-tighter">CASA OCCIDENTE</h1>
-            <p class="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">Western House Labs: Bridging the gap between creative chaos and professional precision.</p>
+    <main id="view-partners" class="page-view px-6">
+        <div class="max-w-4xl mx-auto bg-zinc-900 border-2 border-indigo-900/50 p-12">
+            <span class="status-badge status-released mb-8 inline-block">CORE_PARTNER: WESTERN_HOUSE_LABS</span>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter text-indigo-400 uppercase">Casa Occidente</h1>
+            <p class="text-2xl text-zinc-400 mb-12">Professional workflow automation. Developers of RaiderPro. Technical advisors to V.G. Designs.</p>
             
-            <div class="flex gap-4 justify-center mb-20">
-                <a href="https://casaoccidente.com/en-lang" target="_blank" class="glass-btn border-indigo-500/50 text-indigo-400">Explore RaiderPro</a>
-                <a href="https://github.com/casa-occidente" target="_blank" class="glass-btn">GitHub Profile</a>
+            <div class="flex gap-4">
+                <a href="https://casaoccidente.com/en-lang" target="_blank" class="glass-btn border-indigo-500/50 text-indigo-400">EXPLORE RAIDERPRO</a>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                    <h3 class="text-indigo-400 mb-4 mono text-sm uppercase">Intelligent Automation</h3>
-                    <p class="text-zinc-400 text-sm">Developers of RaiderPro, the professional-grade volume rider.</p>
-                </div>
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                    <h3 class="text-indigo-400 mb-4 mono text-sm uppercase">Strategic Collaboration</h3>
-                    <p class="text-zinc-400 text-sm">Technical guidance and validation for the Very Good Designs ecosystem.</p>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="border-t border-white/5 py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="mt-24 p-12 border-t-8 border-black bg-zinc-950">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 opacity-50">
             <div class="text-center md:text-left">
-                <div class="brand mb-2">VERY GOOD DESIGNS</div>
-                <p class="text-zinc-600 text-xs">&copy; 2025 Evan Beechem. Research and Development Labs.</p>
+                <div class="mono text-xs mb-2 tracking-widest">VERY GOOD DESIGNS // R&D DIVISION</div>
+                <p class="mono text-[10px] uppercase">&copy; 2025 EVAN BEECHEM. ALL RIGHTS RESERVED.</p>
             </div>
-            <div class="flex gap-6 text-[10px] mono text-zinc-500 uppercase tracking-widest">
-                <a href="https://beechem.site" class="hover:text-white transition-colors">Corporate Site</a>
-                <a href="https://github.com/KhanTheDaleK1" class="hover:text-white transition-colors">GitHub Repository</a>
+            <div class="flex gap-8 mono text-[10px] uppercase tracking-widest">
+                <a href="https://beechem.site" class="hover:text-emerald-500 transition-colors">CORPORATE_NET</a>
+                <a href="https://github.com/KhanTheDaleK1" class="hover:text-emerald-500 transition-colors">GITHUB_UPLINK</a>
             </div>
         </div>
     </footer>

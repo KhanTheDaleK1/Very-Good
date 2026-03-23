@@ -1,34 +1,3 @@
-// Star Background Engine
-function createStars() {
-    const container = document.getElementById('global-stars');
-    if (!container) return;
-    
-    const starCount = 100;
-    
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.opacity = Math.random() * 0.5 + 0.2;
-        
-        // Animation
-        star.animate([
-            { opacity: star.style.opacity },
-            { opacity: 1 },
-            { opacity: star.style.opacity }
-        ], {
-            duration: Math.random() * 3000 + 2000,
-            iterations: Infinity
-        });
-        
-        container.appendChild(star);
-    }
-}
-
 // Router / Navigation Logic
 function navigate(pageId) {
     const views = document.querySelectorAll('.page-view');
@@ -72,16 +41,31 @@ async function loadProjects() {
         
         grid.innerHTML = data.projects.map(project => `
             <div class="product-card cursor-pointer" onclick="${project.action}">
-                <div class="flex justify-between items-start mb-12">
-                    <div>
-                        <span class="status-badge ${project.statusClass} mb-3 inline-block">${project.status}</span>
-                        <h2 class="text-3xl text-${project.color}">${project.name}</h2>
-                    </div>
-                    <span class="mono text-[10px] text-zinc-600">${project.version}</span>
+                <div class="screw screw-tl"></div>
+                <div class="screw screw-tr"></div>
+                <div class="screw screw-bl"></div>
+                <div class="screw screw-br"></div>
+                
+                <div class="flex justify-between items-start mb-4">
+                    <span class="status-badge ${project.statusClass}">${project.status}</span>
+                    <span class="mono text-[10px] text-zinc-500 tracking-widest uppercase">${project.version}</span>
                 </div>
-                <p class="text-zinc-400 mb-8">${project.description}</p>
+                
+                <h2 class="card-title" style="color: var(--${project.color.includes('cyan') ? 'phosphor-cyan' : project.color.includes('amber') ? 'amber-lamp' : 'aluminum'})">
+                    ${project.name}
+                </h2>
+                
+                <div class="card-readout">
+                    <span class="mono">> STATUS: ONLINE</span><br>
+                    <span class="mono">> ${project.description}</span>
+                </div>
+                
                 <div class="flex gap-4">
-                    ${project.tags.map(tag => `<span class="mono text-[10px] text-zinc-500">${tag}</span>`).join('')}
+                    ${project.tags.map(tag => `
+                        <span class="mono text-[9px] border border-zinc-700 px-2 py-1 bg-black/50">
+                            ${tag}
+                        </span>
+                    `).join('')}
                 </div>
             </div>
         `).join('');
@@ -92,22 +76,20 @@ async function loadProjects() {
 
 // Initialize
 window.onload = () => {
-    createStars();
     loadProjects();
     
     // Check hash on load
     const hash = window.location.hash.replace('#', '');
     if (hash) {
-        // Delay navigation slightly to ensure views are ready
         setTimeout(() => navigate(hash), 100);
     }
 };
 
-// Scroll Parallax for stars
-window.addEventListener('scroll', () => {
-    const stars = document.getElementById('global-stars');
-    if (stars) {
-        const scrolled = window.pageYOffset;
-        stars.style.transform = `translateY(${scrolled * 0.15}px)`;
+// Subtle Scanline Glitch Effect (Random)
+setInterval(() => {
+    const overlay = document.querySelector('.crt-overlay');
+    if (overlay && Math.random() > 0.95) {
+        overlay.style.opacity = '0.3';
+        setTimeout(() => overlay.style.opacity = '0.15', 50);
     }
-});
+}, 100);
