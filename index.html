@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Very Good Designs | Premium Audio Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050507;
+            --surface-color: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Page Transitions */
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a, .nav-links button {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover { color: white; }
+
+        /* Product Cards */
+        .product-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Construction Label */
+        .status-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-dev {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.2);
+        }
+
+        .status-released {
+            background: rgba(34, 211, 238, 0.1);
+            color: #22d3ee;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        /* Cosmic Rays Theme */
+        .theme-cosmic { --accent: #00d4ff; }
+        .theme-echo { --accent: #f59e0b; }
+        .theme-pedal { --accent: #8b5cf6; }
+        .theme-omni { --accent: #ec4899; }
+
+        /* Typography */
+        h1, h2, h3 { font-family: var(--font-main); font-weight: 800; }
+        .mono { font-family: var(--font-mono); }
+
+        /* Background Effects */
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0d0d12 0%, #050507 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* Glass buttons */
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-bg" id="global-stars"></div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="brand" onclick="navigate('home')">VERY GOOD DESIGNS</a>
+            <div class="nav-links">
+                <button onclick="navigate('cosmic')">Cosmic Rays</button>
+                <button onclick="navigate('echo')">Tape Echo</button>
+                <button onclick="navigate('pedals')">Hardware</button>
+                <button onclick="navigate('omni')">Mods</button>
+                <button onclick="navigate('archive')">Archive</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME VIEW -->
+    <main id="view-home" class="page-view active pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <header class="text-center mb-24">
+                <span class="mono text-zinc-500 text-xs tracking-widest uppercase mb-4 block">Independent Research & Development</span>
+                <h1 class="text-5xl md:text-7xl mb-6 tracking-tight">Audio tools that <br><span class="text-zinc-500 italic">feel like instruments.</span></h1>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">From high-performance C++ DSP to custom hardware circuitry, we build precision tools for the avant-garde musician.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Cosmic Rays -->
+                <div class="product-card cursor-pointer" onclick="navigate('cosmic')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-released mb-3 inline-block">Released (Beta)</span>
+                            <h2 class="text-3xl text-cyan-400">Cosmic Rays</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">v23.03.2026</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Professional-grade granular processor. Engineered for infinite sonic exploration as a native AU/VST3/LV2 plugin.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">macOS (METAL)</span>
+                        <span class="mono text-[10px] text-zinc-500">WINDOWS</span>
+                        <span class="mono text-[10px] text-zinc-500">LINUX</span>
+                    </div>
+                </div>
+
+                <!-- Tape Echo -->
+                <div class="product-card cursor-pointer" onclick="navigate('echo')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-dev mb-3 inline-block">Under Construction</span>
+                            <h2 class="text-3xl text-amber-500">Tape Echo</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">In Active Labs</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">20-head virtual tape loop with physics-modeled mechanical instability. C++23 DSP engine based on legendary hardware.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">JUCE 8</span>
+                        <span class="mono text-[10px] text-zinc-500">METAL ACCELERATED</span>
+                    </div>
+                </div>
+
+                <!-- Hardware Pedals -->
+                <div class="product-card cursor-pointer" onclick="navigate('pedals')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-dev mb-3 inline-block">Under Construction</span>
+                            <h2 class="text-3xl text-violet-400">Physical Hardware</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">Hardware Labs</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Bespoke guitar effects and signal processors. Analog souls with digital precision. Enclosures currently in fabrication.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">ANALOG CIRCUITS</span>
+                        <span class="mono text-[10px] text-zinc-500">TEENY MCU</span>
+                    </div>
+                </div>
+
+                <!-- Omnichord Mods -->
+                <div class="product-card cursor-pointer" onclick="navigate('omni')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-dev mb-3 inline-block">Under Construction</span>
+                            <h2 class="text-3xl text-pink-400">Omnichord Mods</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">Modification Services</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Expanding the sonic range of the OM-84 and OM-36. MIDI implementation, CV control, and custom filter stacks.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">RETRO-FIT</span>
+                        <span class="mono text-[10px] text-zinc-500">MIDI EXPANSION</span>
+                    </div>
+                </div>
+
+                <!-- Awesome Omnichord Archive -->
+                <div class="product-card cursor-pointer" onclick="navigate('archive')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-released mb-3 inline-block">Active Archive</span>
+                            <h2 class="text-3xl text-emerald-400">Awesome Omnichord</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">The Strumplate Archive</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">A curated collection of resources for the Suzuki Omnichord. Technical specs, repair guides, and community history for the world's most dreamy instrument.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">KNOWLEDGE BASE</span>
+                        <span class="mono text-[10px] text-zinc-500">TECHNICAL REPAIR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- COSMIC RAYS VIEW -->
+    <main id="view-cosmic" class="page-view theme-cosmic pt-20">
+        <section class="min-h-screen px-6 py-20 flex flex-col items-center justify-center text-center">
+            <span class="status-badge status-released mb-6">BETA v23.03.2026 AVAILABLE</span>
+            <h1 class="text-5xl md:text-8xl mb-8 tracking-tighter">COSMIC RAYS</h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mb-12">A comprehensive effects plugin for unconventional soundscapes. Professional-grade granular processing for the modern producer.</p>
+            <div class="flex gap-4">
+                <button class="glass-btn border-cyan-500/50 text-cyan-400">Free Download</button>
+                <a href="https://github.com/KhanTheDaleK1/cosmic-rays" target="_blank" class="glass-btn">View Source</a>
+            </div>
+            <div class="mt-20 w-full max-w-4xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+                <img src="https://github.com/user-attachments/assets/123c2907-87a6-497b-a2eb-ce29a7325faf" alt="Cosmic Rays UI" class="w-full">
+            </div>
+        </section>
+    </main>
+
+    <!-- TAPE ECHO VIEW -->
+    <main id="view-echo" class="page-view theme-echo pt-20 bg-gradient-to-b from-amber-950/20 to-black">
+        <section class="max-w-6xl mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="flex-1">
+                    <span class="status-badge status-dev mb-6 inline-block">In Development</span>
+                    <h1 class="text-6xl mb-6 text-amber-500">TAPE ECHO</h1>
+                    <p class="text-xl text-zinc-400 mb-8 leading-relaxed">Blending the mechanical soul of the Echo Fix EF-X3 with the classic grit of the Roland RE-201. Delivered via a high-performance C++23 / JUCE 8 DSP engine.</p>
+                    
+                    <div class="flex gap-4 mb-12">
+                        <button class="glass-btn border-amber-500/50 text-amber-500">In Active Labs</button>
+                        <a href="https://github.com/KhanTheDaleK1/Tape-echo-project" target="_blank" class="glass-btn">View Source</a>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
+                            <p class="text-zinc-300"><strong>20-Head Virtual Tape Loop:</strong> Independent playback heads with precision smoothing.</p>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
+                            <p class="text-zinc-300"><strong>Wow & Flutter:</strong> Physics-modeled mechanical drift and motor instability.</p>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2"></div>
+                            <p class="text-zinc-300"><strong>Spring Reverb:</strong> Authentic tank simulation with dedicated width control.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full">
+                    <div class="aspect-square bg-zinc-900 border border-amber-500/20 rounded-3xl flex flex-col items-center justify-center p-12 text-center group transition-all hover:border-amber-500/50">
+                        <div class="text-5xl mb-6">📼</div>
+                        <h3 class="text-2xl mb-4">Mechanical Aesthetic</h3>
+                        <p class="text-zinc-500 text-sm">Our UI features a real-time tape chamber visualization powered by a Verlet physics engine.</p>
+                        <div class="mt-8 px-6 py-2 border border-amber-500/30 rounded text-[10px] mono text-amber-500 uppercase tracking-widest">
+                            Rendering Engine: Metal / D2D
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- GENERIC UNDER CONSTRUCTION VIEW (Pedals & Omni) -->
+    <main id="view-under-construction" class="page-view pt-20">
+        <section class="min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
+            <div class="w-24 h-24 bg-zinc-900 rounded-full flex items-center justify-center mb-8 border border-white/10">
+                <div class="animate-pulse w-4 h-4 bg-zinc-500 rounded-full"></div>
+            </div>
+            <h1 id="construction-title" class="text-5xl mb-4 uppercase tracking-tighter">PROJECT ALPHA</h1>
+            <p id="construction-desc" class="text-zinc-500 max-w-md">Our hardware engineering labs are currently fabricating enclosures and optimizing circuitry. Sign up for the mailing list to be notified of the prototype phase.</p>
+            <div class="mt-12 status-badge status-dev">Lab Status: In Fabrication</div>
+            <button onclick="navigate('home')" class="mt-8 text-sm text-zinc-400 hover:text-white transition-colors">← Back to Hub</button>
+        </section>
+    </main>
+
+    <!-- AWESOME OMNICHORD VIEW -->
+    <main id="view-archive" class="page-view pt-20 bg-gradient-to-b from-emerald-950/20 to-black">
+        <section class="max-w-6xl mx-auto px-6 py-20 text-center">
+            <span class="status-badge status-released mb-6">LIVE WEB ARCHIVE</span>
+            <h1 class="text-6xl md:text-8xl mb-6 text-emerald-400 tracking-tighter">AWESOME OMNICHORD</h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">The definitive strumplate archive. A comprehensive collection of resources, technical specifications, and repair guides for the Suzuki Omnichord community.</p>
+            
+            <div class="flex gap-4 justify-center mb-20">
+                <a href="https://khanthedalek1.github.io/Awesome-Omichord/" target="_blank" class="glass-btn border-emerald-500/50 text-emerald-400">Visit Archive</a>
+                <a href="https://github.com/KhanTheDaleK1/Awesome-Omichord" target="_blank" class="glass-btn">View on GitHub</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
+                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Technical Database</h3>
+                    <p class="text-zinc-400 text-sm">Detailed specifications for every model from the original 1981 OM-27 to the modern 2024 OM-108.</p>
+                </div>
+                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
+                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Repair & Modding</h3>
+                    <p class="text-zinc-400 text-sm">Essential guides for maintenance, battery terminal repair, and power polarity safety standards.</p>
+                </div>
+                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
+                    <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Community Hub</h3>
+                    <p class="text-zinc-400 text-sm">Direct links to the most active forums, subreddits, and Discord servers for strumplate enthusiasts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/5 py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="brand mb-2">VERY GOOD DESIGNS</div>
+                <p class="text-zinc-600 text-xs">© 2025 Evan Beechem. Research and Development Labs.</p>
+            </div>
+            <div class="flex gap-6 text-[10px] mono text-zinc-500 uppercase tracking-widest">
+                <a href="https://beechem.site" class="hover:text-white transition-colors">Corporate Site</a>
+                <a href="https://github.com/KhanTheDaleK1" class="hover:text-white transition-colors">GitHub Repository</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Star Background Engine
+        function createStars() {
+            const container = document.getElementById('global-stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.5 + 0.2;
+                
+                // Animation
+                star.animate([
+                    { opacity: star.style.opacity },
+                    { opacity: 1 },
+                    { opacity: star.style.opacity }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    iterations: Infinity
+                });
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Router / Navigation Logic
+        function navigate(pageId) {
+            const views = document.querySelectorAll('.page-view');
+            const targetId = `view-${pageId}`;
+            
+            // Handle construction page content
+            if (pageId === 'pedals' || pageId === 'omni') {
+                const title = pageId === 'pedals' ? 'PHYSICAL HARDWARE' : 'OMNICHORD MODS';
+                const desc = pageId === 'pedals' 
+                    ? 'Bespoke guitar effects and signal processors. Analog souls with digital precision. We are currently finalizing enclosure designs and PCB layouts.'
+                    : 'Expanding the sonic range of the OM-84 and OM-36. We are currently testing the MIDI expansion board and custom filter stacks.';
+                
+                document.getElementById('construction-title').innerText = title;
+                document.getElementById('construction-desc').innerText = desc;
+                
+                // Route to the generic construction view
+                views.forEach(v => v.classList.remove('active'));
+                document.getElementById('view-under-construction').classList.add('active');
+            } else {
+                // Route to actual page
+                views.forEach(v => v.classList.remove('active'));
+                const targetView = document.getElementById(targetId);
+                if (targetView) targetView.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update URL hash (optional)
+            window.location.hash = pageId;
+        }
+
+        // Initialize
+        window.onload = () => {
+            createStars();
+            
+            // Check hash on load
+            const hash = window.location.hash.replace('#', '');
+            if (hash) navigate(hash);
+        };
+
+        // Scroll Parallax for stars
+        window.addEventListener('scroll', () => {
+            const stars = document.getElementById('global-stars');
+            const scrolled = window.pageYOffset;
+            stars.style.transform = `translateY(${scrolled * 0.15}px)`;
+        });
+    </script>
+</body>
+</html>
