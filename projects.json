@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "id": "cosmic",
+      "name": "Cosmic Rays",
+      "status": "Released (Beta)",
+      "statusClass": "status-released",
+      "version": "v23.03.2026",
+      "description": "Professional-grade granular processor. Engineered for infinite sonic exploration as a native AU/VST3/LV2 plugin.",
+      "tags": ["macOS (METAL)", "WINDOWS", "LINUX"],
+      "color": "cyan-400",
+      "action": "navigate('cosmic')"
+    },
+    {
+      "id": "echo",
+      "name": "Tape Echo",
+      "status": "Under Construction",
+      "statusClass": "status-dev",
+      "version": "In Active Labs",
+      "description": "20-head virtual tape loop with physics-modeled mechanical instability. C++23 DSP engine based on legendary hardware.",
+      "tags": ["JUCE 8", "METAL ACCELERATED"],
+      "color": "amber-500",
+      "action": "navigate('echo')"
+    },
+    {
+      "id": "pedals",
+      "name": "Physical Hardware",
+      "status": "Under Construction",
+      "statusClass": "status-dev",
+      "version": "Hardware Labs",
+      "description": "Bespoke guitar effects and signal processors. Analog souls with digital precision. Enclosures currently in fabrication.",
+      "tags": ["ANALOG CIRCUITS", "TEENY MCU"],
+      "color": "violet-400",
+      "action": "navigate('pedals')"
+    },
+    {
+      "id": "omni",
+      "name": "Omnichord Mods",
+      "status": "Under Construction",
+      "statusClass": "status-dev",
+      "version": "Modification Services",
+      "description": "Expanding the sonic range of the OM-84 and OM-36. MIDI implementation, CV control, and custom filter stacks.",
+      "tags": ["RETRO-FIT", "MIDI EXPANSION"],
+      "color": "pink-400",
+      "action": "navigate('omni')"
+    },
+    {
+      "id": "archive",
+      "name": "Awesome Omnichord",
+      "status": "Active Archive",
+      "statusClass": "status-released",
+      "version": "The Strumplate Archive",
+      "description": "A curated collection of resources for the Suzuki Omnichord. Technical specs, repair guides, and community history for the world's most dreamy instrument.",
+      "tags": ["KNOWLEDGE BASE", "TECHNICAL REPAIR"],
+      "color": "emerald-400",
+      "action": "window.open('https://khanthedalek1.github.io/Awesome-Omichord/', '_blank')"
+    },
+    {
+      "id": "partners",
+      "name": "Casa Occidente",
+      "status": "Strategic Partner",
+      "statusClass": "status-released",
+      "version": "Western House Labs",
+      "description": "Professional audio workflow automation and plugin development. Experts in intelligent audio riding and high-precision signal processing.",
+      "tags": ["RAIDERPRO", "WORKFLOW AUTOMATION"],
+      "color": "indigo-400",
+      "action": "window.open('https://casaoccidente.com/en-lang', '_blank')"
+    }
+  ]
+}
