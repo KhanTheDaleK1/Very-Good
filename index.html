@@ -185,6 +185,7 @@
                 <button onclick="navigate('pedals')">Hardware</button>
                 <button onclick="navigate('omni')">Mods</button>
                 <button onclick="navigate('archive')">Archive</button>
+                <button onclick="navigate('partners')">Partners</button>
             </div>
         </div>
     </nav>
@@ -265,7 +266,7 @@
                 </div>
 
                 <!-- Awesome Omnichord Archive -->
-                <div class="product-card cursor-pointer" onclick="navigate('archive')">
+                <div class="product-card cursor-pointer" onclick="window.open('https://khanthedalek1.github.io/Awesome-Omichord/', '_blank')">
                     <div class="flex justify-between items-start mb-12">
                         <div>
                             <span class="status-badge status-released mb-3 inline-block">Active Archive</span>
@@ -277,6 +278,22 @@
                     <div class="flex gap-4">
                         <span class="mono text-[10px] text-zinc-500">KNOWLEDGE BASE</span>
                         <span class="mono text-[10px] text-zinc-500">TECHNICAL REPAIR</span>
+                    </div>
+                </div>
+
+                <!-- Casa Occidente -->
+                <div class="product-card cursor-pointer" onclick="window.open('https://casaoccidente.com/en-lang', '_blank')">
+                    <div class="flex justify-between items-start mb-12">
+                        <div>
+                            <span class="status-badge status-released mb-3 inline-block">Strategic Partner</span>
+                            <h2 class="text-3xl text-indigo-400">Casa Occidente</h2>
+                        </div>
+                        <span class="mono text-[10px] text-zinc-600">Western House Labs</span>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Professional audio workflow automation and plugin development. Experts in intelligent audio riding and high-precision signal processing.</p>
+                    <div class="flex gap-4">
+                        <span class="mono text-[10px] text-zinc-500">RAIDERPRO</span>
+                        <span class="mono text-[10px] text-zinc-500">WORKFLOW AUTOMATION</span>
                     </div>
                 </div>
             </div>
@@ -379,6 +396,31 @@
                 <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
                     <h3 class="text-emerald-400 mb-4 mono text-sm uppercase">Community Hub</h3>
                     <p class="text-zinc-400 text-sm">Direct links to the most active forums, subreddits, and Discord servers for strumplate enthusiasts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CASA OCCIDENTE VIEW -->
+    <main id="view-partners" class="page-view pt-20 bg-gradient-to-b from-indigo-950/20 to-black">
+        <section class="max-w-6xl mx-auto px-6 py-20 text-center">
+            <span class="status-badge status-released mb-6">CORE DEVELOPMENT PARTNER</span>
+            <h1 class="text-6xl md:text-8xl mb-6 text-indigo-400 tracking-tighter">CASA OCCIDENTE</h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">Western House Labs: Bridging the gap between creative chaos and professional precision. A specialized studio dedicated to streamlining the modern audio workflow.</p>
+            
+            <div class="flex gap-4 justify-center mb-20">
+                <a href="https://casaoccidente.com/en-lang" target="_blank" class="glass-btn border-indigo-500/50 text-indigo-400">Explore RaiderPro</a>
+                <a href="https://github.com/casa-occidente" target="_blank" class="glass-btn">GitHub Profile</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
+                    <h3 class="text-indigo-400 mb-4 mono text-sm uppercase">Intelligent Automation</h3>
+                    <p class="text-zinc-400 text-sm">Developers of RaiderPro, the professional-grade volume rider that delivers consistent results in seconds, allowing creators to focus on the art of sound.</p>
+                </div>
+                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
+                    <h3 class="text-indigo-400 mb-4 mono text-sm uppercase">Strategic Collaboration</h3>
+                    <p class="text-zinc-400 text-sm">Providing technical guidance and validation for the Very Good Designs plugin ecosystem, ensuring world-class stability and DSP performance.</p>
                 </div>
             </div>
         </section>
