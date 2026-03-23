@@ -176,8 +176,6 @@ function animateVU() {
 // Initialize
 window.onload = () => {
     loadProjects();
-    updateNixieClocks();
-    setInterval(updateNixieClocks, 5000);
     initOscilloscope();
     animateVU();
     
