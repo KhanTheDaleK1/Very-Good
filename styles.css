@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=VT323&family=Teko:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:wght@300;400;600;800&family=VT323&display=swap');
 
 :root {
     --chassis-grey: #D1D5DB; 
@@ -9,9 +9,9 @@
     --trek-cyan: #00CCFF;
     --warning-red: #FF3300;
     --hifi-wood: #4e342e;
-    --font-euro: 'Michroma', sans-serif;
+    --font-euro: 'Lexend', sans-serif;
     --font-scope: 'VT323', monospace;
-    --font-label: 'Teko', sans-serif;
+    --font-label: 'Atkinson Hyperlegible', sans-serif;
 }
 
 body {
@@ -20,6 +20,8 @@ body {
     font-family: var(--font-euro);
     margin: 0;
     overflow-x: hidden;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
 }
 
 /* Brushed Aluminum Texture */
@@ -38,7 +40,8 @@ body {
     padding: 0.5rem 1rem;
     color: #888;
     font-family: var(--font-label);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.2s;
